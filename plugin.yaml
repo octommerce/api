@@ -1,0 +1,6 @@
+plugin:
+    name: 'octommerce.api::lang.plugin.name'
+    description: 'API for Octommerce'
+    author: Octommerce
+    icon: oc-icon-code
+    homepage: ''
