@@ -6,17 +6,27 @@
         'middleware' => 'cors'
         ], function() {
             Route::get('products', 'Products@index');
-            Route::get('brands', 'Brands@index');
-            Route::get('productlists', 'ProductLists@index');
+            Route::get('products/{id}', 'Products@show');
+
             Route::get('categories', 'Categories@index');
+            Route::get('categories/{id}', 'Categories@show');
+
+            Route::get('brands', 'Brands@index');
+            Route::get('brands/{id}', 'Brands@show');
+
+            Route::get('productlists', 'ProductLists@index');
+            Route::get('productlists/{id}', 'ProductLists@show');
 
             Route::get('cart', 'Cart@index');
             Route::post('cart', 'Cart@store');
-            Route::put('cart', 'Cart@store');
+            Route::put('cart', 'Cart@update');
             Route::delete('cart', 'Cart@destroy');
 
             Route::group(['middleware' => 'oauth'], function() {
-                //
+                Route::get('orders', 'Orders@index');
+                Route::get('orders/{id}', 'Orders@show');
+
+                Route::post('checkout', 'Checkout@store');
             });
     });
 

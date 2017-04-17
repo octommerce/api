@@ -21,6 +21,7 @@ class ProductTransformer extends TransformerAbstract
             'description' => $product->description,
             'price'       => $product->price,
             'sale_price'  => $product->sale_price,
+            'images'      => $product->images,
         ];
     }
 

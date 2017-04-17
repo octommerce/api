@@ -2,8 +2,9 @@
 
 use Input;
 use Event;
-use Octommerce\Octommerce\Models\Product;
 use Octobro\API\Controllers\ApiController;
+use Octommerce\Octommerce\Models\Product;
+use Octommerce\API\Transformers\ProductTransformer;
 
 class Products extends ApiController
 {
@@ -13,5 +14,12 @@ class Products extends ApiController
         $products = Product::get();
 
         return $this->respondwithCollection($products, new ProductTransformer);
+    }
+
+    public function show($id)
+    {
+    	$product = Product::find($id);
+
+    	return $this->respondwithItem($product, new ProductTransformer);
     }
 }
