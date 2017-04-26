@@ -10,8 +10,7 @@ And This API is very powerfull for e-commerce multiplatform
 	- [1 Abstract](#1-abstract)
 	- [2 Table of contents](#2-table-of-contents)
 	- [3 Introduction](#3-introduction)
-	- [4    Consistency fundamentals](#4-consistency-fundamentals)
-	   - [4.1    URL structure](#41-url-structure)
+	- [4    URL STRUCTURE](http://htmlpreview.github.io/?https://github.com/octommerce/api/blob/master/octommerce-api.html)
     
 ## 3 Introduction
 Developers access most Platform resources via HTTP interfaces.
