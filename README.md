@@ -17,32 +17,5 @@ Developers access most Platform resources via HTTP interfaces.
 Although each service typically provides language-specific frameworks to wrap their APIs, all of their operations eventually boil down to HTTP requests.
 Thus a goal of these guidelines is to ensure Octommerce APIs can be easily and consistently consumed by any client with basic HTTP support.
 
-## 4 Consistency fundamentals
-### 4.1 URL structure
-Humans SHOULD be able to easily read and construct URLs.
-
-This facilitates discovery and eases adoption on platforms without a well-supported client library.
-
-An example of a well-structured URL is:
-
-```
-https://api.octommerce.com/v1/people/jdoe@contoso.com/inbox
-```
-
-An example URL that is not friendly is:
-
-```
-https://api.octommerce.com/EWS/OData/Users('jdoe@microsoft.com')/Folders('AAMkADdiYzI1MjUzLTk4MjQtNDQ1Yy05YjJkLWNlMzMzYmIzNTY0MwAuAAAAAACzMsPHYH6HQoSwfdpDx-2bAQCXhUk6PC1dS7AERFluCgBfAAABo58UAAA=')
-```
-
-A frequent pattern that comes up is the use of URLs as values.
-Services MAY use URLs as values.
-For example, the following is acceptable:
-
-```
-https://api.octommerce.com/v1/items?url=https://resources.contoso.com/shoes/fancy
-```
-
-
 
 
