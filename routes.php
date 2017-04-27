@@ -17,6 +17,9 @@
             Route::get('productlists', 'ProductLists@index');
             Route::get('productlists/{id}', 'ProductLists@show');
 
+            Route::get('reviews', 'Reviews@index');
+            Route::get('reviews/{id}', 'Reviews@show');
+
             Route::get('cart', 'Cart@index');
             Route::post('cart', 'Cart@store');
             Route::put('cart', 'Cart@update');

@@ -24,13 +24,12 @@ class Products extends ApiController
 
             // by category
             if (isset($filter['category']) && $filter['category']) {
-                $categoryIds = explode(',', $filter['category']);
+                $categoryIds = explode(',',$filter['category'];
                 foreach($categoryIds as $categoryId) {
                     $query->whereHas('categories', function($query) use ($categoryId) {
                         $query->whereId($categoryId);
                     });
                 }
-            
             }
 
             // by brand
