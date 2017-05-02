@@ -20,16 +20,16 @@
             Route::get('reviews', 'Reviews@index');
             Route::get('reviews/{id}', 'Reviews@show');
 
-            Route::get('cart', 'Cart@index');
-            Route::post('cart', 'Cart@store');
-            Route::put('cart', 'Cart@update');
-            Route::delete('cart', 'Cart@destroy');
 
             Route::group(['middleware' => 'oauth'], function() {
-                Route::get('orders', 'Orders@index');
-                Route::get('orders/{id}', 'Orders@show');
+                Route::get('cart', 'Cart@index');
+                Route::post('cart', 'Cart@store');
+                Route::put('cart', 'Cart@update');
+                Route::delete('cart', 'Cart@destroy');
 
-                Route::post('checkout', 'Checkout@store');
+                Route::get('orders', 'Orders@index');
+                Route::post('orders', 'Orders@store');
+                Route::get('orders/{id}', 'Orders@show');
             });
     });
 
