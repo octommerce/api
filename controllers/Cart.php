@@ -17,13 +17,11 @@ class Cart extends ApiController
 
     public function store() {
 
-        $data = Input::get();
-
         Auth::login($this->user);
 
         CartHelper::clear();
 
-        foreach ($data['products'] as $product) {
+        foreach ($this->data['products'] as $product) {
         	CartHelper::addItem($product['id'], isset($product['qty']) ? $product['qty'] : 1, isset($product['data']) ? $product['data'] : null);
         }
 
@@ -32,12 +30,10 @@ class Cart extends ApiController
 
 	public function update() {
 
-        $data = Input::get();
-
         Auth::login($this->user);
 
 
-        foreach ($data['products'] as $product) {
+        foreach ($this->data['products'] as $product) {
             CartHelper::updateItem($product['id'], isset($product['qty']) ? $product['qty'] : 1, isset($product['data']) ? $product['data'] : null);
         }
 
@@ -46,12 +42,11 @@ class Cart extends ApiController
     }
 
     public function destroy() {
-        $data = Input::get();
 
         Auth::login($this->user);
 
 
-        foreach ($data['products'] as $product) {
+        foreach ($this->data['products'] as $product) {
             CartHelper::removeItem($product['id']);
         }
 
