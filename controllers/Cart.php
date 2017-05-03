@@ -31,12 +31,30 @@ class Cart extends ApiController
     }
 
 	public function update() {
-    }
 
-    public function destroy() {
+        $data = Input::get();
 
         Auth::login($this->user);
 
-        CartHelper::clear();
+
+        foreach ($data['products'] as $product) {
+            CartHelper::updateItem($product['id'], isset($product['qty']) ? $product['qty'] : 1, isset($product['data']) ? $product['data'] : null);
+        }
+
+        return $this->respondwithItem(CartHelper::get(), new CartTransformer);
+
+    }
+
+    public function destroy() {
+        $data = Input::get();
+
+        Auth::login($this->user);
+
+
+        foreach ($data['products'] as $product) {
+            CartHelper::removeItem($product['id']);
+        }
+
+        return $this->respondwithItem(CartHelper::get(), new CartTransformer);
     }
 }
