@@ -1,15 +1,15 @@
 <?php namespace Octommerce\API\Transformers;
 
-use League\Fractal\TransformerAbstract;
+use Octobro\API\Classes\Transformer;
 use Octommerce\Octommerce\Models\Order;
 
-class OrderTransformer extends TransformerAbstract
+class OrderTransformer extends Transformer
 {
-    protected $defaultIncludes = [
+    public $defaultIncludes = [
         'invoice',
     ];
 
-    protected $availableIncludes = [
+    public $availableIncludes = [
         'invoice',
     ];
 

@@ -1,13 +1,13 @@
 <?php namespace Octommerce\API\Transformers;
 
-use League\Fractal\TransformerAbstract;
+use Octobro\API\Classes\Transformer;
 use Octommerce\Octommerce\Models\Category;
 
-class CategoryTransformer extends TransformerAbstract
+class CategoryTransformer extends Transformer
 {
-    protected $defaultIncludes = [];
+    public $defaultIncludes = [];
 
-    protected $availableIncludes = [
+    public $availableIncludes = [
         'products',
     ];
 

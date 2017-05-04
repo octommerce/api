@@ -1,13 +1,13 @@
 <?php namespace Octommerce\API\Transformers;
 
-use League\Fractal\TransformerAbstract;
+use Octobro\API\Classes\Transformer;
 use Responsiv\Pay\Models\Invoice;
 
-class InvoiceTransformer extends TransformerAbstract
+class InvoiceTransformer extends Transformer
 {
-    protected $defaultIncludes = [];
+    public $defaultIncludes = [];
 
-    protected $availableIncludes = [];
+    public $availableIncludes = [];
 
     public function transform(Invoice $invoice)
     {

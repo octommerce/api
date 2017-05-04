@@ -1,9 +1,8 @@
 <?php namespace Octommerce\API\Controllers;
 
 use Auth;
-use Input;
 use Octommerce\Octommerce\Models\Order;
-use Octobro\API\Controllers\ApiController;
+use Octobro\API\Classes\ApiController;
 use Octommerce\Octommerce\Classes\OrderManager;
 use Octommerce\API\Transformers\OrderTransformer;
 

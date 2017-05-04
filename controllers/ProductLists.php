@@ -1,12 +1,8 @@
 <?php namespace Octommerce\API\Controllers;
 
-use Input;
-use Event;
-use League\Fractal\Resource\Collection;
-use Octobro\API\Controllers\ApiController;
+use Octobro\API\Classes\ApiController;
 use Octommerce\Octommerce\Models\ProductList;
 use Octommerce\API\Transformers\ProductListTransformer;
-use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class ProductLists extends ApiController
 {

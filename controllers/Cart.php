@@ -1,9 +1,8 @@
 <?php namespace Octommerce\API\Controllers;
 
 use Auth;
-use Input;
 use Cart as CartHelper;
-use Octobro\API\Controllers\ApiController;
+use Octobro\API\Classes\ApiController;
 use Octommerce\API\Transformers\CartTransformer;
 
 class Cart extends ApiController
@@ -44,7 +43,6 @@ class Cart extends ApiController
     public function destroy() {
 
         Auth::login($this->user);
-
 
         foreach ($this->data['products'] as $product) {
             CartHelper::removeItem($product['id']);
