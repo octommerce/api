@@ -9,6 +9,15 @@ use Octommerce\API\Transformers\OrderTransformer;
 
 class Orders extends ApiController
 {
+	
+	public function index()
+    {
+        $orders = Order::get();
+
+        return $this->respondwithCollection($orders, new OrderTransformer);
+
+    }
+
     public function store() {
         $orderManager = OrderManager::instance();
 
