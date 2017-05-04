@@ -30,6 +30,7 @@
                 Route::get('orders', 'Orders@index');
                 Route::post('orders', 'Orders@store');
                 Route::get('orders/{id}', 'Orders@show');
+                Route::put('orders/{id}', 'Orders@update');
             });
     });
 
