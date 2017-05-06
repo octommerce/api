@@ -11,7 +11,7 @@ class ProductListTransformer extends Transformer
         'products',
     ];
 
-    public function transform(ProductList $productList)
+    public function data(ProductList $productList)
     {
         return [
             'id'          => (int) $productList->id,

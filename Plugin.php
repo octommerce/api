@@ -13,11 +13,13 @@ class Plugin extends PluginBase
     {
     	UserTransformer::extend(function($transformer) {
 
-    		$transformer->availableIncludes[] = 'orders';
+            $transformer->addInclude('orders', function(User $user) use ($transformer) {
+                return $transformer->collection($user->orders, new OrderTransformer);
+            });
 
-    		$transformer->addDynamicMethod('includeOrders', function(User $user) use ($transformer) {
-    			return $transformer->collection($user->orders, new OrderTransformer);
-    		});
+            $transformer->addField('orders_count', function(User $user) {
+            	return $user->orders()->count();
+            });
 
     	});
 

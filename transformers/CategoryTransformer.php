@@ -11,7 +11,7 @@ class CategoryTransformer extends Transformer
         'products',
     ];
 
-    public function transform(Category $category)
+    public function data(Category $category)
     {
         return [
             'id'          => (int) $category->id,

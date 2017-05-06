@@ -13,7 +13,7 @@ class OrderTransformer extends Transformer
         'invoice',
     ];
 
-    public function transform(Order $order)
+    public function data(Order $order)
     {
         return [
             'id'                => (int) $order->id,

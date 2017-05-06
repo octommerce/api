@@ -5,14 +5,12 @@ use Octommerce\Octommerce\Models\Product;
 
 class ProductTransformer extends Transformer
 {
-    public $defaultIncludes = [];
-
     public $availableIncludes = [
         'categories',
         'brand',
     ];
 
-    public function transform(Product $product)
+    public function data(Product $product)
     {
         return [
             'id'          => (int) $product->id,

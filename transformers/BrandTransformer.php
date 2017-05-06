@@ -11,7 +11,7 @@ class BrandTransformer extends Transformer
         'products',
     ];
 
-    public function transform(Brand $brand)
+    public function data(Brand $brand)
     {
         return [
             'id'          => (int) $brand->id,

@@ -9,7 +9,7 @@ class InvoiceTransformer extends Transformer
 
     public $availableIncludes = [];
 
-    public function transform(Invoice $invoice)
+    public function data(Invoice $invoice)
     {
         return [
             'id'                => (int) $invoice->id,

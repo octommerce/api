@@ -5,13 +5,11 @@ use Octommerce\Octommerce\Models\Review;
 
 class ReviewTransformer extends Transformer
 {
-    public $defaultIncludes = [];
-
     public $availableIncludes = [
         'products',
     ];
 
-    public function transform(Review $review)
+    public function data(Review $review)
     {
         return [
             'id'          => (int) $review->id,

@@ -13,7 +13,7 @@ class CartTransformer extends Transformer
         'products',
     ];
 
-    public function transform(Cart $cart)
+    public function data(Cart $cart)
     {
         return [
             'id'          => (int) $cart->id,
