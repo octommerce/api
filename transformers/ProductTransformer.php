@@ -17,9 +17,9 @@ class ProductTransformer extends Transformer
             'sku'         => $product->sku,
             'name'        => $product->name,
             'description' => $product->description,
-            'price'       => $product->price,
-            'sale_price'  => $product->sale_price,
-            'images'      => $product->images,
+            'price'       => (float) $product->price,
+            'sale_price'  => (float) $product->sale_price,
+            'images'      => $this->images($product->images),
         ];
     }
 

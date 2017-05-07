@@ -18,7 +18,7 @@ class CategoryTransformer extends Transformer
             'slug'        => $category->slug,
             'name'        => $category->name,
             'description' => $category->description,
-            'images'      => $category->images,
+            'images'      => $this->images($category->images),
             'color'       => $category->color,
             'keywords'    => $category->keywords,
         ];

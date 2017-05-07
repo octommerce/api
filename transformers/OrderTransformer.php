@@ -29,7 +29,7 @@ class OrderTransformer extends Transformer
             'misc_fee'          => (float) $order->misc_fee,
             'total'             => (float) $order->total,
             'status_code'       => $order->status_code,
-            'status_updated_at' => $order->status_updated_at,
+            'status_updated_at' => date($order->status_updated_at),
             'created_at'        => date($order->created_at),
         ];
     }

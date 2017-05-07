@@ -18,7 +18,7 @@ class BrandTransformer extends Transformer
             'slug'        => $brand->slug,
             'name'        => $brand->name,
             'description' => $brand->description,
-            'images'      => $brand->images,
+            'images'      => $this->images($brand->images),
             'keywords'    => $brand->keywords,
         ];
     }

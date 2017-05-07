@@ -12,13 +12,13 @@ class ReviewTransformer extends Transformer
     public function data(Review $review)
     {
         return [
-            'id'          => (int) $review->id,
-            'product_id'        => $review->product_id,
-            'user_id'        => $review->user_id,
-            'title' => $review->title,
-            'content'      => $review->content,
-            'rating'    => $review->rating,
-            'is_buyer'	=> $review->is_buyer
+            'id'         => (int) $review->id,
+            'product_id' => (int) $review->product_id,
+            'user_id'    => (int) $review->user_id,
+            'title'      => $review->title,
+            'content'    => $review->content,
+            'rating'     => $review->rating,
+            'is_buyer'	 => (Boolean) $review->is_buyer
         ];
     }
 

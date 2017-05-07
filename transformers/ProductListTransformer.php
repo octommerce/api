@@ -14,14 +14,14 @@ class ProductListTransformer extends Transformer
     public function data(ProductList $productList)
     {
         return [
-            'id'          => (int) $productList->id,
-            'slug'        => $productList->slug,
-            'name'        => $productList->name,
-            'description' => $productList->description,
+            'id'           => (int) $productList->id,
+            'slug'         => $productList->slug,
+            'name'         => $productList->name,
+            'description'  => $productList->description,
             'content'      => $productList->content,
-            'excerpt'    => $productList->excerpt,
-            'keywords'	=> $productList->keywords,
-            'partial_path'	=> $productList->partial_path
+            'excerpt'      => $productList->excerpt,
+            'keywords'	   => $productList->keywords,
+            'partial_path' => $productList->partial_path,
         ];
     }
 

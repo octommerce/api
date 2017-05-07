@@ -20,7 +20,7 @@ class InvoiceTransformer extends Transformer
             'total'             => (float) $invoice->total,
             'hash'              => $invoice->hash,
             'status_code'       => $invoice->status_code,
-            'status_updated_at' => $invoice->status_updated_at,
+            'status_updated_at' => date($invoice->status_updated_at),
             'created_at'        => date($invoice->created_at),
         ];
     }
