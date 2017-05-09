@@ -11,6 +11,7 @@ class OrderTransformer extends Transformer
 
     public $availableIncludes = [
         'invoice',
+        'products',
     ];
 
     public function data(Order $order)
@@ -29,6 +30,11 @@ class OrderTransformer extends Transformer
             'misc_fee'          => (float) $order->misc_fee,
             'total'             => (float) $order->total,
             'status_code'       => $order->status_code,
+            'status'            => [
+                'name'        => $order->status->name,
+                'color'       => $order->status->color,
+                'description' => $order->status->description,
+            ],
             'status_updated_at' => date($order->status_updated_at),
             'created_at'        => date($order->created_at),
         ];
@@ -37,6 +43,11 @@ class OrderTransformer extends Transformer
     public function includeInvoice(Order $order)
     {
         return $this->item($order->invoice, new InvoiceTransformer);
+    }
+
+    public function includeProducts(Order $order)
+    {
+        return $this->collection($order->products, new OrderProductTransformer);
     }
 
 }

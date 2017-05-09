@@ -11,7 +11,7 @@ class Orders extends ApiController
 
 	public function index()
     {
-        return $this->respondwithCollection($this->user->orders, new OrderTransformer);
+        return $this->respondwithCollection($this->user->orders()->orderBy('created_at', 'desc')->get(), new OrderTransformer);
 
     }
 
