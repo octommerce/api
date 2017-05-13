@@ -29,6 +29,12 @@ class OrderTransformer extends Transformer
             'tax'               => (float) $order->tax,
             'misc_fee'          => (float) $order->misc_fee,
             'total'             => (float) $order->total,
+            'is_same_address'   => (Boolean) $order->is_same_address,
+            'shipping_name'     => $order->shipping_name,
+            'shipping_phone'    => $order->shipping_phone,
+            'shipping_company'  => $order->shipping_company,
+            'shipping_address'  => $order->shipping_address,
+            'shipping_postcode' => $order->shipping_postcode,
             'status_code'       => $order->status_code,
             'status'            => [
                 'name'        => $order->status->name,
