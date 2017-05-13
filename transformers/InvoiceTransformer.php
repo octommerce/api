@@ -7,7 +7,9 @@ class InvoiceTransformer extends Transformer
 {
     public $defaultIncludes = [];
 
-    public $availableIncludes = [];
+    public $availableIncludes = [
+        'order'
+    ];
 
     public function data(Invoice $invoice)
     {
@@ -23,6 +25,11 @@ class InvoiceTransformer extends Transformer
             'status_updated_at' => date($invoice->status_updated_at),
             'created_at'        => date($invoice->created_at),
         ];
+    }
+
+    public function includeOrder(Invoice $invoice)
+    {
+        return $this->item($invoice->related, new OrderTransformer);
     }
 
 }
