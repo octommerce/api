@@ -10,6 +10,7 @@ class ProductTransformer extends TransformerAbstract
     protected $availableIncludes = [
         'categories',
         'brand',
+        'reviews'
     ];
 
     public function transform(Product $product)
@@ -28,6 +29,11 @@ class ProductTransformer extends TransformerAbstract
     public function includeCategories(Product $product)
     {
         return $this->collection($product->categories, new CategoryTransformer);
+    }
+
+    public function includeReviews(Product $product)
+    {
+        return $this->collection($product->reviews, new ReviewTransformer);
     }
 
     public function includeBrand(Product $product)

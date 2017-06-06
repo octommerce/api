@@ -8,7 +8,7 @@ class ReviewTransformer extends TransformerAbstract
     protected $defaultIncludes = [];
 
     protected $availableIncludes = [
-        'products',
+        'product',
     ];
 
     public function transform(Review $review)
@@ -24,9 +24,9 @@ class ReviewTransformer extends TransformerAbstract
         ];
     }
 
-    public function includeProducts(Review $review)
+    public function includeProduct(Review $review)
     {
-        return $this->collection($review->products, new ProductTransformer);
+        return $this->item($review->product, new ProductTransformer);
     }
 
 }
