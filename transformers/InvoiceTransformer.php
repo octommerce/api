@@ -1,15 +1,17 @@
 <?php namespace Octommerce\API\Transformers;
 
-use League\Fractal\TransformerAbstract;
+use Octobro\API\Classes\Transformer;
 use Responsiv\Pay\Models\Invoice;
 
-class InvoiceTransformer extends TransformerAbstract
+class InvoiceTransformer extends Transformer
 {
-    protected $defaultIncludes = [];
+    public $defaultIncludes = [];
 
-    protected $availableIncludes = [];
+    public $availableIncludes = [
+        'order'
+    ];
 
-    public function transform(Invoice $invoice)
+    public function data(Invoice $invoice)
     {
         return [
             'id'                => (int) $invoice->id,
@@ -20,9 +22,14 @@ class InvoiceTransformer extends TransformerAbstract
             'total'             => (float) $invoice->total,
             'hash'              => $invoice->hash,
             'status_code'       => $invoice->status_code,
-            'status_updated_at' => $invoice->status_updated_at,
+            'status_updated_at' => date($invoice->status_updated_at),
             'created_at'        => date($invoice->created_at),
         ];
+    }
+
+    public function includeOrder(Invoice $invoice)
+    {
+        return $this->item($invoice->related, new OrderTransformer);
     }
 
 }

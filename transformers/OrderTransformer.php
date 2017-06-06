@@ -1,19 +1,20 @@
 <?php namespace Octommerce\API\Transformers;
 
-use League\Fractal\TransformerAbstract;
+use Octobro\API\Classes\Transformer;
 use Octommerce\Octommerce\Models\Order;
 
-class OrderTransformer extends TransformerAbstract
+class OrderTransformer extends Transformer
 {
-    protected $defaultIncludes = [
+    public $defaultIncludes = [
         'invoice',
     ];
 
-    protected $availableIncludes = [
+    public $availableIncludes = [
         'invoice',
+        'products',
     ];
 
-    public function transform(Order $order)
+    public function data(Order $order)
     {
         return [
             'id'                => (int) $order->id,
@@ -28,8 +29,19 @@ class OrderTransformer extends TransformerAbstract
             'tax'               => (float) $order->tax,
             'misc_fee'          => (float) $order->misc_fee,
             'total'             => (float) $order->total,
+            'is_same_address'   => (Boolean) $order->is_same_address,
+            'shipping_name'     => $order->shipping_name,
+            'shipping_phone'    => $order->shipping_phone,
+            'shipping_company'  => $order->shipping_company,
+            'shipping_address'  => $order->shipping_address,
+            'shipping_postcode' => $order->shipping_postcode,
             'status_code'       => $order->status_code,
-            'status_updated_at' => $order->status_updated_at,
+            'status'            => [
+                'name'        => $order->status->name,
+                'color'       => $order->status->color,
+                'description' => $order->status->description,
+            ],
+            'status_updated_at' => date($order->status_updated_at),
             'created_at'        => date($order->created_at),
         ];
     }
@@ -37,6 +49,11 @@ class OrderTransformer extends TransformerAbstract
     public function includeInvoice(Order $order)
     {
         return $this->item($order->invoice, new InvoiceTransformer);
+    }
+
+    public function includeProducts(Order $order)
+    {
+        return $this->collection($order->products, new OrderProductTransformer);
     }
 
 }

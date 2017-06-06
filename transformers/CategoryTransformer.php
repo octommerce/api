@@ -1,24 +1,24 @@
 <?php namespace Octommerce\API\Transformers;
 
-use League\Fractal\TransformerAbstract;
+use Octobro\API\Classes\Transformer;
 use Octommerce\Octommerce\Models\Category;
 
-class CategoryTransformer extends TransformerAbstract
+class CategoryTransformer extends Transformer
 {
-    protected $defaultIncludes = [];
+    public $defaultIncludes = [];
 
-    protected $availableIncludes = [
+    public $availableIncludes = [
         'products',
     ];
 
-    public function transform(Category $category)
+    public function data(Category $category)
     {
         return [
             'id'          => (int) $category->id,
             'slug'        => $category->slug,
             'name'        => $category->name,
             'description' => $category->description,
-            'images'      => $category->images,
+            'images'      => $this->images($category->images),
             'color'       => $category->color,
             'keywords'    => $category->keywords,
         ];

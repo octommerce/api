@@ -1,8 +1,6 @@
 <?php namespace Octommerce\API\Controllers;
 
-use Input;
-use Event;
-use Octobro\API\Controllers\ApiController;
+use Octobro\API\Classes\ApiController;
 use Octommerce\Octommerce\Models\Category;
 use Octommerce\API\Transformers\CategoryTransformer;
 

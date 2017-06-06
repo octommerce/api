@@ -1,28 +1,26 @@
 <?php namespace Octommerce\API\Transformers;
 
-use League\Fractal\TransformerAbstract;
+use Octobro\API\Classes\Transformer;
 use Octommerce\Octommerce\Models\Product;
 
-class ProductTransformer extends TransformerAbstract
+class ProductTransformer extends Transformer
 {
-    protected $defaultIncludes = [];
-
-    protected $availableIncludes = [
+    public $availableIncludes = [
         'categories',
         'brand',
         'reviews'
     ];
 
-    public function transform(Product $product)
+    public function data(Product $product)
     {
         return [
             'id'          => (int) $product->id,
             'sku'         => $product->sku,
             'name'        => $product->name,
             'description' => $product->description,
-            'price'       => $product->price,
-            'sale_price'  => $product->sale_price,
-            'images'      => $product->images,
+            'price'       => (float) $product->price,
+            'sale_price'  => (float) $product->sale_price,
+            'images'      => $this->images($product->images),
         ];
     }
 
