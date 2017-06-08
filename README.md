@@ -11,8 +11,8 @@ And This API is very powerfull for e-commerce multiplatform
 	- [2 Table of contents](#2-table-of-contents)
 	- [3 Introduction](#3-introduction)
 	- [4    URL STRUCTURE]
-		- [ 3 columns] (https://htmlpreview.github.io/?https://github.com/octommerce/api-docs/blob/master/octommerce-api-3-column.html#products)
-		- [2 columns] (https://htmlpreview.github.io/?https://github.com/octommerce/api-docs/blob/master/octommerce-api-two-column.html#products)
+	 - [3 columns](http://htmlpreview.github.io/?https://github.com/octommerce/api-docs/blob/master/octommerce-api-3-column.html)
+	 - [2 columns](http://htmlpreview.github.io/?https://github.com/octommerce/api-docs/blob/master/octommerce-api-two-column.html)
     
 ## 3 Introduction
 Developers access most Platform resources via HTTP interfaces.
