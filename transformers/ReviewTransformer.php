@@ -5,9 +5,7 @@ use Octommerce\Octommerce\Models\Review;
 
 class ReviewTransformer extends Transformer
 {
-    protected $defaultIncludes = [];
-
-    protected $availableIncludes = [
+    public $availableIncludes = [
         'product',
     ];
 
