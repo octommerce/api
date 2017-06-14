@@ -1,6 +1,7 @@
 <?php namespace Octommerce\API\Transformers;
 
 use Octobro\API\Classes\Transformer;
+use Octobro\API\Transformers\UserTransformer;
 use Octommerce\Octommerce\Models\Order;
 
 class OrderTransformer extends Transformer
@@ -12,6 +13,7 @@ class OrderTransformer extends Transformer
     public $availableIncludes = [
         'invoice',
         'products',
+        'user',
     ];
 
     public function data(Order $order)
@@ -44,6 +46,11 @@ class OrderTransformer extends Transformer
             'status_updated_at' => date($order->status_updated_at),
             'created_at'        => date($order->created_at),
         ];
+    }
+
+    public function includeUser(Order $order)
+    {
+        return $this->item($order->user, new UserTransformer);
     }
 
     public function includeInvoice(Order $order)
