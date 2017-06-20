@@ -1,5 +1,6 @@
 <?php namespace Octommerce\API\Controllers;
 
+use Input;
 use Octobro\API\Classes\ApiController;
 use Octommerce\Octommerce\Models\Category;
 use Octommerce\API\Transformers\CategoryTransformer;
@@ -9,9 +10,10 @@ class Categories extends ApiController
 
     public function index()
     {
-        $categories = Category::get();
 
-        return $this->respondwithCollection($categories, new CategoryTransformer);
+        $paginator = Category::paginate(Input::get('number', 20));
+
+        return $this->respondWithPaginator($paginator, new CategoryTransformer);
     }
 
     public function show($id)
