@@ -13,6 +13,8 @@ class Plugin extends PluginBase
     {
     	UserTransformer::extend(function($transformer) {
 
+			$transformer->addField('phone');
+
             $transformer->addInclude('orders', function(User $user) use ($transformer) {
                 return $transformer->collection($user->orders, new OrderTransformer);
             });
