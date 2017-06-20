@@ -1,5 +1,6 @@
 <?php namespace Octommerce\API\Controllers;
 
+use Input;
 use Auth;
 use Octommerce\Octommerce\Models\Order;
 use Octobro\API\Classes\ApiController;
@@ -11,7 +12,8 @@ class Orders extends ApiController
 
 	public function index()
     {
-        return $this->respondwithCollection($this->user->orders()->orderBy('created_at', 'desc')->get(), new OrderTransformer);
+        $paginator = $this->user->orders()->orderBy('created_at', 'desc')->paginate(Input::get('number', 20));
+        return $this->respondWithPaginator($paginator, new OrderTransformer);
 
     }
 

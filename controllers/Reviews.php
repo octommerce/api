@@ -1,5 +1,6 @@
 <?php namespace Octommerce\API\Controllers;
 
+use Input;
 use Octobro\API\Classes\ApiController;
 use Octommerce\Octommerce\Models\Review;
 use Octommerce\API\Transformers\ReviewTransformer;
@@ -9,9 +10,9 @@ class Reviews extends ApiController
 
     public function index()
     {
-        $review = Review::get();
-
-        return $this->respondwithCollection($review, new ReviewTransformer);
+      
+        $paginator = Review::paginate(Input::get('number', 20));
+        return $this->respondWithPaginator($paginator, new ReviewTransformer);
     }
 
     public function show($id)
