@@ -10,7 +10,7 @@ class Brands extends ApiController
 
     public function index()
     {
-       
+
         $paginator = Brand::paginate(Input::get('number', 20));
 
         return $this->respondWithPaginator($paginator, new BrandTransformer);
@@ -19,6 +19,10 @@ class Brands extends ApiController
     public function show($id)
     {
     	$brand = Brand::find($id);
+
+        if (! $brand) {
+            return $this->errorNotFound('Brand not found');
+        }
 
     	return $this->respondwithItem($brand, new BrandTransformer);
     }

@@ -16,8 +16,12 @@ class ProductLists extends ApiController
 
     public function show($id)
     {
-    	$productLists = ProductList::find($id);
+    	$productList = ProductList::find($id);
 
-    	return $this->respondwithItem($productLists, new ProductListTransformer);
+        if (! $productList) {
+            return $this->errorNotFound('Product list not found');
+        }
+
+    	return $this->respondwithItem($productList, new ProductListTransformer);
     }
 }

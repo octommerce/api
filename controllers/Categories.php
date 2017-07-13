@@ -20,6 +20,10 @@ class Categories extends ApiController
     {
     	$category = Category::find($id);
 
+        if (! $category) {
+            return $this->errorNotFound('Category not found');
+        }
+
     	return $this->respondwithItem($category, new CategoryTransformer);
     }
 }

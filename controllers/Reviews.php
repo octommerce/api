@@ -10,7 +10,7 @@ class Reviews extends ApiController
 
     public function index()
     {
-      
+
         $paginator = Review::paginate(Input::get('number', 20));
         return $this->respondWithPaginator($paginator, new ReviewTransformer);
     }
@@ -18,6 +18,10 @@ class Reviews extends ApiController
     public function show($id)
     {
     	$review = Review::find($id);
+
+        if (! $review) {
+            return $this->errorNotFound('Review not found');
+        }
 
     	return $this->respondwithItem($review, new ReviewTransformer);
     }

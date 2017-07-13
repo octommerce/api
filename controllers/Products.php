@@ -59,7 +59,7 @@ class Products extends ApiController
                 if ($stock == 'true') {
                     $query->available();
                 }
-                
+
             }
         }
 
@@ -100,6 +100,10 @@ class Products extends ApiController
     public function show($id)
     {
     	$product = Product::find($id);
+
+        if (! $product) {
+            return $this->errorNotFound('Product not found');
+        }
 
     	return $this->respondwithItem($product, new ProductTransformer);
     }

@@ -32,12 +32,20 @@ class Orders extends ApiController
     {
         $order = $this->user->orders()->whereId($id)->first();
 
+		if (! $order) {
+            return $this->errorNotFound('Order not found');
+        }
+
         return $this->respondwithItem($order, new OrderTransformer);
     }
 
     public function update($id)
     {
         $order = $this->user->orders()->whereId($id)->first();
+
+		if (! $order) {
+            return $this->errorNotFound('Order not found');
+        }
 
         $order->fill($this->data);
         $order->save();
