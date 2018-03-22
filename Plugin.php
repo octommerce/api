@@ -2,7 +2,7 @@
 
 use System\Classes\PluginBase;
 use RainLab\User\Models\User;
-use Octobro\API\Transformers\UserTransformer;
+use Octobro\OAuth2\Transformers\UserTransformer;
 use Octommerce\API\Transformers\OrderTransformer;
 
 class Plugin extends PluginBase
