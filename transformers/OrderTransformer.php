@@ -1,7 +1,7 @@
 <?php namespace Octommerce\API\Transformers;
 
 use Octobro\API\Classes\Transformer;
-use Octobro\API\Transformers\UserTransformer;
+use Octobro\OAuth2\Transformers\UserTransformer;
 use Octommerce\Octommerce\Models\Order;
 
 class OrderTransformer extends Transformer
