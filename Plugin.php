@@ -7,7 +7,7 @@ use Octommerce\API\Transformers\OrderTransformer;
 
 class Plugin extends PluginBase
 {
-	public $require = ['Octobro.API'];
+	public $require = ['Octobro.API', 'Octobro.OAuth2', 'Octommerce.Octommerce'];
 
     public function boot()
     {

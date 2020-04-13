@@ -25,7 +25,7 @@ class CartTransformer extends Transformer
 
     public function includeProducts(Cart $cart)
     {
-        return $this->collection($cart->products, new ProductTransformer);
+        return $this->collection($cart->products, new OrderProductTransformer);
     }
 
 }
