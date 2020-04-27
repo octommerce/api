@@ -18,7 +18,7 @@ class Cart extends ApiController
     {
         Auth::login($this->getUser());
 
-        CartHelper::clear();
+        // CartHelper::clear();
 
         foreach ($this->data['products'] as $product) {
         	CartHelper::addItem($product['id'], isset($product['qty']) ? $product['qty'] : 1, isset($product['data']) ? $product['data'] : null);
@@ -38,13 +38,15 @@ class Cart extends ApiController
         return $this->respondwithItem(CartHelper::get(), new CartTransformer);
     }
 
-    public function destroy()
+    public function destroy($productId)
     {
         Auth::login($this->getUser());
 
-        foreach ($this->data['products'] as $product) {
-            CartHelper::removeItem($product['id']);
-        }
+        // foreach ($this->data['products'] as $product) {
+        //     CartHelper::removeItem($product['id']);
+        // }
+
+        CartHelper::removeItem($productId);
 
         return $this->respondwithItem(CartHelper::get(), new CartTransformer);
     }

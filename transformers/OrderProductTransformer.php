@@ -10,7 +10,7 @@ class OrderProductTransformer extends Transformer
         return [
             'id'       => (int) $product->id,
             'sku'      => $product->sku,
-            'name'     => $product->pivot->name,
+            'name'     => $product->name,
             'qty'      => (int) $product->pivot->qty,
             'price'    => (float) $product->pivot->price,
             'discount' => (float) $product->pivot->discount,

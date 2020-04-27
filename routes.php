@@ -25,7 +25,7 @@
                 Route::get('cart', 'Cart@index');
                 Route::post('cart', 'Cart@store');
                 Route::put('cart', 'Cart@update');
-                Route::delete('cart', 'Cart@destroy');
+                Route::delete('cart/{productId}', 'Cart@destroy');
 
                 Route::get('orders', 'Orders@index');
                 Route::post('orders', 'Orders@store');
