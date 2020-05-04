@@ -1,19 +1,23 @@
-<?php namespace Octommerce\API\Transformers;
+<?php
+
+namespace Octommerce\API\Transformers;
 
 use Octobro\API\Classes\Transformer;
-use Octobro\OAuth2\Transformers\UserTransformer;
 use Octommerce\Octommerce\Models\Order;
+use Octobro\OAuth2\Transformers\UserTransformer;
 
 class OrderTransformer extends Transformer
 {
     public $defaultIncludes = [
         'invoice',
+        'statusLogs',
     ];
 
     public $availableIncludes = [
         'invoice',
         'products',
         'user',
+        'statusLogs',
     ];
 
     public function data(Order $order)
@@ -31,12 +35,15 @@ class OrderTransformer extends Transformer
             'tax'               => (float) $order->tax,
             'misc_fee'          => (float) $order->misc_fee,
             'total'             => (float) $order->total,
-            'is_same_address'   => (Boolean) $order->is_same_address,
+            'is_same_address'   => (bool) $order->is_same_address,
             'shipping_name'     => $order->shipping_name,
             'shipping_phone'    => $order->shipping_phone,
             'shipping_company'  => $order->shipping_company,
             'shipping_address'  => $order->shipping_address,
+            'shipping_city'     => $order->shipping_city,
+            'shipping_state'    => $order->shipping_state,
             'shipping_postcode' => $order->shipping_postcode,
+            'shipping_cost'     => $order->shipping_cost,
             'status_code'       => $order->status_code,
             'status'            => [
                 'name'        => $order->status->name,
@@ -63,4 +70,8 @@ class OrderTransformer extends Transformer
         return $this->collection($order->products, new OrderProductTransformer);
     }
 
+    public function includeStatusLogs(Order $order)
+    {
+        return $this->collection($order->status_logs->sortByDesc('timestamp'), new OrderStatusLogsTransformer);
+    }
 }
