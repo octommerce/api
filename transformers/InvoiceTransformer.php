@@ -1,7 +1,9 @@
-<?php namespace Octommerce\API\Transformers;
+<?php
 
-use Octobro\API\Classes\Transformer;
+namespace Octommerce\API\Transformers;
+
 use Responsiv\Pay\Models\Invoice;
+use Octobro\API\Classes\Transformer;
 
 class InvoiceTransformer extends Transformer
 {
@@ -20,6 +22,10 @@ class InvoiceTransformer extends Transformer
             'discount'          => (float) $invoice->discount,
             'tax'               => (float) $invoice->tax,
             'total'             => (float) $invoice->total,
+            'payment_method'    => [
+                'name'          => $invoice->payment_method->name,
+            ],
+            'due_at'            => $invoice->due_at,
             'hash'              => $invoice->hash,
             'status_code'       => $invoice->status_code,
             'status_updated_at' => date($invoice->status_updated_at),
@@ -31,5 +37,4 @@ class InvoiceTransformer extends Transformer
     {
         return $this->item($invoice->related, new OrderTransformer);
     }
-
 }
