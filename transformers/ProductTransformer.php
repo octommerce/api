@@ -21,6 +21,8 @@ class ProductTransformer extends Transformer
             'description'       => $product->description,
             'price'             => (float) $product->price,
             'sale_price'        => (float) $product->sale_price,
+            'discount_start_at' => $product->discount_start_at,
+            'discount_end_at'   => $product->discount_end_at,
             'images'            => $this->images($product->images),
         ];
     }
