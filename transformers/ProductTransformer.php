@@ -8,19 +8,20 @@ class ProductTransformer extends Transformer
     public $availableIncludes = [
         'categories',
         'brand',
-        'reviews'
+        'reviews',
+        'relatedProducts'
     ];
 
     public function data(Product $product)
     {
         return [
-            'id'          => (int) $product->id,
-            'sku'         => $product->sku,
-            'name'        => $product->name,
-            'description' => $product->description,
-            'price'       => (float) $product->price,
-            'sale_price'  => (float) $product->sale_price,
-            'images'      => $this->images($product->images),
+            'id'                => (int) $product->id,
+            'sku'               => $product->sku,
+            'name'              => $product->name,
+            'description'       => $product->description,
+            'price'             => (float) $product->price,
+            'sale_price'        => (float) $product->sale_price,
+            'images'            => $this->images($product->images),
         ];
     }
 
@@ -39,4 +40,8 @@ class ProductTransformer extends Transformer
         return $this->item($product->brand, new BrandTransformer);
     }
 
+    public function includeRelatedProducts(Product $product)
+    {
+        return $this->collection($product->related_products, new ProductTransformer);
+    }
 }
