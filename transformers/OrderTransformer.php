@@ -50,6 +50,7 @@ class OrderTransformer extends Transformer
                 'color'       => $order->status->color,
                 'description' => $order->status->description,
             ],
+            'payment_confirmation' => $order->payment_confirmation ? 1 : 0,
             'status_updated_at' => date($order->status_updated_at),
             'created_at'        => date($order->created_at),
         ];
