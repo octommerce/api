@@ -30,6 +30,18 @@ class Products extends ApiController
                 }
             }
 
+            // by Min Price
+            if (isset($filter['minPrice']) && $filter['minPrice']) {
+                $minPrice = $filter['minPrice'];
+                $query->where('price', '>=', $minPrice);
+            }
+
+            // by Max Price
+            if (isset($filter['maxPrice']) && $filter['maxPrice']) {
+                $maxPrice = $filter['maxPrice'];
+                $query->where('price', '<=', $maxPrice);
+            }
+
             // by brand
             if (isset($filter['brand']) && $filter['brand']) {
                 $brandId = $filter['brand'];
